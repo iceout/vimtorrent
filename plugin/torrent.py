@@ -17,7 +17,7 @@ def ReadTorrentIntoBuffer():
   global bencode
   buffer = vim.current.buffer
   
-  torrent = open(buffer.name,'Ur')
+  torrent = open(buffer.name,'r')
   bencode = bdec(torrent.read())
   torrent.close()
 
@@ -27,7 +27,7 @@ def ReadTorrentIntoBuffer():
   if bencode.has_key('announce-list'):
     config.set('torrent', 'trackers', '\n'+'\n'.join([tracker[0] for tracker in bencode['announce-list']]))
   else:
-    config.set('torrent', 'trackers', '\n'+bencode['announce'][0])
+    config.set('torrent', 'trackers', '\n'+bencode['announce'])
   config.write(config_file)
   config_file.seek(0)
 
