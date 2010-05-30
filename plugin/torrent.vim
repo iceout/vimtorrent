@@ -1,9 +1,10 @@
 " Description:  Edit torrents using vim <torrent.vim>
 " Maintainer:   Kazuo Teramoto <kaz.rag@gmail.com>
 " Date:         05/10/2010
-" Version:      0.5.5
+" Version:      0.5.6
 "
-" Needed: hunnyb (python module [http://pypi.python.org/pypi/HunnyB/])
+" Needed: hunnyb [http://pypi.python.org/pypi/HunnyB/]
+"         or bittorent [http://www.bittorrent.com]
 "
 " Copyright:    Copyright (C) 2010 Kazuo Teramoto {{{1
 "               This program is free software: you can redistribute it and/or

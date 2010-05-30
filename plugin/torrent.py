@@ -29,7 +29,7 @@ def ReadTorrentIntoBuffer():
     for tier in bencode['announce-list']:
       for tracker in tier:
         tr_list.append(tracker)
-      tr_list.append('.')
+      tr_list.append('')
     del tr_list[-1]
     config.set('torrent', 'trackers', '\n'+'\n'.join(tr_list))
   else:
@@ -48,6 +48,7 @@ def WriteBufferToTorrent():
   config_file=StringIO()
 
   for line in buffer:
+    if line.isspace() or not line: line = ' .'
     config_file.write(line + '\n')
   config_file.seek(0)
   config = ConfigParser.ConfigParser()
