@@ -22,11 +22,11 @@
 "               <http://www.gnu.org/licenses/>.
 "
 " Usage: {{{1
-" The human readable format is a config file that can be read by the
-" ConfigParser module.
-"
-" Trackers are listed one per line after a 'trackers:' line. A trailing
+" Trackers URL are listed one per line after a 'trackers' line. A trailing
 " space before the tracker URL is *obligatory*.
+"
+" Tiers are separated by empty lines or lines containing a single '.' (dot)
+" character.
 "
 "1}}}
 exec 'pyfile '.expand('<sfile>:p:h').'/torrent.py'

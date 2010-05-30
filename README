@@ -1,0 +1,26 @@
+This plugin make possible to edit torrent files using vim.
+
+You need vim compiled with python support and hunnyb[1] or bittorent[2]
+
+Its parse the bencode data and presents its in plain text version that can be
+edited and saved again to the torrent file.
+
+Install:
+To install you can copy the files from the plugin/ dir to your vim runtime.
+
+If you have mkvimball
+you can use 
+$ make install
+to install it.
+
+Usage:
+Trackers URL are listed one per line after a 'trackers' line. A trailing
+space before the tracker URL is *obligatory*.
+
+Tiers are separated by empty lines or lines containing a single '.' (dot)
+character.
+
+Bugs, suggestions and comments can be sent to <kaz.rag@gmail.com>.
+[1]: http://pypi.python.org/pypi/HunnyB/
+[2]: http://www.bittorrent.com/
+[3]: http://mysite.verizon.net/astronaut/src/index.html#MKVIMBALL 
