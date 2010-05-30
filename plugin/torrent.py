@@ -25,7 +25,13 @@ def ReadTorrentIntoBuffer():
   config = ConfigParser.RawConfigParser()
   config.add_section('torrent')
   if bencode.has_key('announce-list'):
-    config.set('torrent', 'trackers', '\n'+'\n'.join([tracker[0] for tracker in bencode['announce-list']]))
+    tr_list=[]
+    for tier in bencode['announce-list']:
+      for tracker in tier:
+        tr_list.append(tracker)
+      tr_list.append('.')
+    del tr_list[-1]
+    config.set('torrent', 'trackers', '\n'+'\n'.join(tr_list))
   else:
     config.set('torrent', 'trackers', '\n'+bencode['announce'])
   config.write(config_file)
@@ -47,9 +53,19 @@ def WriteBufferToTorrent():
   config = ConfigParser.ConfigParser()
   config.readfp(config_file)
   config_file.close()
-  trackers = config.get('torrent','trackers').split('\n')
-  
-  bencode['announce-list']=[[tracker] for tracker in trackers if tracker]
+  trackers = config.get('torrent','trackers').split('\n')[1:]
+  tr_list = []
+  tier = []
+  for tracker in trackers:
+    if tracker == '.':
+      tr_list.append(tier)
+      tier = []
+    else:
+      tier.append(tracker)
+  if trackers[-1] != '.':
+    tr_list.append(tier)
+
+  bencode['announce-list']=tr_list
   bencode['announce']=bencode['announce-list'][0][0]
   
   torrent = open(buffer.name,'w')
