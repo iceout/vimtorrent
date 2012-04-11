@@ -6,12 +6,7 @@ Its parse the bencode data and presents its in plain text version that can be
 edited and saved again to the torrent file.
 
 Install:
-To install you can copy the files from the plugin/ dir to your vim runtime.
-
-If you have mkvimball
-you can use 
-$ make install
-to install it.
+Use Pathogen or Vundle.
 
 Usage:
 Trackers URL are listed one per line after a 'trackers' line. A trailing
