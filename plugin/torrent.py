@@ -5,8 +5,8 @@ try:
   from hunnyb import encode as benc
   from hunnyb import decode as bdec
 except ImportError:
-  from BTL.bencode import bencode as benc
-  from BTL.bencode import bdecode as bdec
+  from bencode import bencode as benc
+  from bencode import bdecode as bdec
 import ConfigParser
 try:
   from cStringIO import StringIO
@@ -16,7 +16,7 @@ except ImportError:
 def ReadTorrentIntoBuffer():
   global bencode
   buffer = vim.current.buffer
-  
+
   torrent = open(buffer.name,'r')
   bencode = bdec(torrent.read())
   torrent.close()
@@ -68,7 +68,7 @@ def WriteBufferToTorrent():
 
   bencode['announce-list']=tr_list
   bencode['announce']=bencode['announce-list'][0][0]
-  
+
   torrent = open(buffer.name,'w')
   torrent.write(benc(bencode))
   torrent.close()
